@@ -1,0 +1,16 @@
+USE Guia_3;
+
+-- 1. RECONFIGURACIÓN ESTRUCTURAL DE LA TABLA MATRICULA (DDL)
+ALTER TABLE Matricula 
+DROP FOREIGN KEY `1`;
+
+ALTER TABLE Matricula 
+ADD CONSTRAINT fk_matricula_estudiante_cascade 
+FOREIGN KEY (IdEstudiante) REFERENCES Estudiante(IdEstudiante) 
+ON DELETE CASCADE;
+
+DELETE FROM Estudiante 
+WHERE IdEstudiante = 1098887777;
+
+SELECT * FROM Estudiante WHERE IdEstudiante = 1098887777;
+SELECT * FROM Matricula WHERE IdEstudiante = 1098887777;
